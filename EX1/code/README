@@ -1,0 +1,66 @@
+Author: Itamar Trainin 315425967
+
+*Part 1 note (Heb-Eng manual alignments): the alignments for this part were done in both directions.
+
+To run IBM Models 1 and 2, please run the file WordAlignment.py using python and use --help see the available
+configurations.
+
+Below are the commands I have used to compose the report. To run those commands please place the english, french and
+golden data in 'data/' directory (or supply different file paths using the available parameters). In addition, make
+sure that the relevant initialization matrices (t_init_model_1.npy, t_init_random.npy and t_init_zeros.npy) are in 
+the 'data/' directory (or supply different file paths using the available parameters).
+
+The commands are as follows:
+# No special configurations
+python WordAlignment.py --ep 50 -m 1
+python WordAlignment.py --ep 50 -m 2
+python WordAlignment.py --ep 50 -m 2 -t data/t_init_model_1.npy
+
+# Number of sentnences
+python WordAlignment.py --ep 50 -m 1 --ll 50 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 500 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 1000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 5000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 10000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 30000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 50000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 70000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 90000 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 --ll 100000 -o -t data/t_init_random.npy
+
+# Epochs
+python WordAlignment.py --ep 1 -m 1 -o -t data/t_init_random.npy
+python WordAlignment.py --ep 5 -m 1 -t data/t_init_random.npy
+python WordAlignment.py --ep 10 -m 1 -t data/t_init_random.npy
+python WordAlignment.py --ep 20 -m 1 -t data/t_init_random.npy
+python WordAlignment.py --ep 40 -m 1 -t data/t_init_random.npy
+python WordAlignment.py --ep 50 -m 1 -t data/t_init_random.npy
+
+# Initialization
+python WordAlignment.py --ep 50 -m 1 -o
+python WordAlignment.py --ep 50 -m 1
+python WordAlignment.py --ep 50 -m 1
+python WordAlignment.py --ep 50 -m 1
+python WordAlignment.py --ep 50 -m 1
+python WordAlignment.py --ep 50 -m 1 -t data/t_init_zero.npy
+
+python WordAlignment.py --ep 50 -m 2
+python WordAlignment.py --ep 50 -m 2
+python WordAlignment.py --ep 50 -m 2
+python WordAlignment.py --ep 50 -m 2
+python WordAlignment.py --ep 50 -m 2
+
+# Translation direction
+python WordAlignment.py --ep 50 -m 1 -f data/hansards.e -e data/hansards.f
+
+# Smoothing
+python WordAlignment.py --ep 50 -m 1 -o -n 0.0001
+python WordAlignment.py --ep 50 -m 1 -n 0.001
+python WordAlignment.py --ep 50 -m 1 -n 0.01
+python WordAlignment.py --ep 50 -m 1 -n 0.1
+python WordAlignment.py --ep 50 -m 1 -n 0.5
+python WordAlignment.py --ep 50 -m 1 -n 0.7
+python WordAlignment.py --ep 50 -m 1 -n 0.9
+python WordAlignment.py --ep 50 -m 1 -n 1
+python WordAlignment.py --ep 50 -m 1 -n 2
+
